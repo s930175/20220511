@@ -19,11 +19,6 @@ const sayGoodNight = () => {
 //     title: 'I am Hello Title'
 // };
 
-// console.log('dirname', __dirname);
-// console.log('filename', __filename);
-//組合路徑
-// console.log(Path.join(__dirname, 'index.js'));
-
 //JS remarks(key=value可縮寫)
 module.exports = {
     say: sayHello,
@@ -31,4 +26,8 @@ module.exports = {
     title,
 };
 
-console.log('module', module);//node hello.js
+ console.log('dirname', __dirname);//(查詢所在資料夾)
+// console.log('filename', __filename);//(查詢完整路徑名稱)
+//console.log('module', module);//node hello.js
+//組合路徑到index.js裡
+//console.log(Path.join(__dirname, 'index.js'));
