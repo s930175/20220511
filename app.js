@@ -27,6 +27,7 @@ sentences.forEach((sentence) => {
     console.log(cowsay.say({
         text : sentence,
         e : "^^",
-        T : "U "
+        T : "Q "
     }));
 })
+
