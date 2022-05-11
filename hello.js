@@ -1,5 +1,4 @@
 //hello.js(這個模組模式定義一個叫sayHello的方法)
-//組合路徑
 const path = require('path');
 
 const title = 'I am Hello Title';
@@ -22,6 +21,7 @@ const sayGoodNight = () => {
 
 // console.log('dirname', __dirname);
 // console.log('filename', __filename);
+//組合路徑
 // console.log(Path.join(__dirname, 'index.js'));
 
 //JS remarks(key=value可縮寫)
