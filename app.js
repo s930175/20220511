@@ -19,5 +19,14 @@ console.log(cowsay.say({
 const hello =  require('./hello');
 
 //////////////////////////////
-hello.say();
-console.log(hello.title)
+// hello.say();
+// console.log(hello.title)
+//很多隻牛
+let sentences = ['Hello', 'World', 'I\'m a cow.'];
+sentences.forEach((sentence) => {
+    console.log(cowsay.say({
+        text : sentence,
+        e : "^^",
+        T : "U "
+    }));
+})
