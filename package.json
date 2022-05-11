@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/s930175/20220511#readme",
   "dependencies": {
-    "cowsay": "^1.5.0"
+   
   },
   "devDependencies": {
     "nodemon": "^2.0.16"
