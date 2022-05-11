@@ -5,14 +5,14 @@
 
 //(一)內建模組
 const path = require('path');
-const http = require('http');
-const url = require('url');
+// const http = require('http');
+// const url = require('url');
 
 //(二)套件模組
 const express = require('express')
 
 //(三)自建模組
-const hello =  require('./hello');
+// const hello =  require('./hello');
 
 //////////////////////////////
 // hello.say();
@@ -62,7 +62,7 @@ app.get('/', (req, res) => {
     // res.write('<body>')
     // res.write('<h1>這是首頁</h1>')
     // res.write('</body>');
-    res.end();
+    // res.end();
 });
 app.listen(3001, () => {
 	console.log('running server on port 3001');
