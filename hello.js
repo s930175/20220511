@@ -31,3 +31,4 @@ module.exports = {
 //console.log('module', module);//node hello.js
 //組合路徑到index.js裡
 //console.log(Path.join(__dirname, 'index.js'));
+
