@@ -6,6 +6,7 @@
 //(一)內建模組
 const path = require('path');
 const http = require('http');
+const url = require('url');
 
 //(二)套件模組
 
@@ -16,7 +17,7 @@ const hello =  require('./hello');
 //////////////////////////////
 // hello.say();
 // console.log(hello.title)
-
+console.log(url.parse('https://forum.gamer.com.tw/C.php?bsn=5786&snA=155786&tnum=1950'))
 
 const server = http.createServer((req, res) => {
 	// console.log('第一個參數是瀏覽器對 web server 的 request', req);
@@ -30,6 +31,7 @@ const server = http.createServer((req, res) => {
         return res.end('This is hey page');
     }
     if (req.url === '/') {
+        //'Content-Type': 'text/plain' 變成純文字
         res.writeHead(200, { 'Content-Type': 'text/html' });
         return res.end('<h1>QQ Why 3000 can not operate</h1>');
     } 
