@@ -23,12 +23,20 @@ const server = http.createServer((req, res) => {
 	// console.log('第二個參數是 web 要response 給瀏覽器的內容', res);
     console.log('req url:', req.url);
     if (req.url === '/login') {
+        res.statusCode = 200;
         return res.end('This is login page');
+    };
+    if(req.url === '/hey'){
+        return res.end('This is hey page');
     }
+    if (req.url === '/') {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        return res.end('<h1>QQ Why 3000 can not operate</h1>');
+    } 
 	res.end();
 });
 
-server.listen(3000, () => {
-	console.log('running server on port 3000');
+server.listen(3001, () => {
+	console.log('running server on port 3001');
 });
 
