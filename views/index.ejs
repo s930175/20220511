@@ -14,32 +14,33 @@
 <body>
     <!-- JavaScript Bundle with Popper -->
     <%- include('./includes/navbar') %>
-                
-    <div class="spinner-border text-primary d-flex justify-content-center" role="status">
-        <img src="/imgs/01.png" alt=""><br>
-        <span class="visually-hidden">Loading...</span>
-    </div>
-    <div class="card" style="width: 18rem;">
+    <div class="container-md">
+        <h1><%= pageTitle %></h1>
         <div class="row">
             <% if(products.length> 0){ %>
-             <!-- TODO: 使用迴圈跑出 products 資料 -->
+            <!-- TODO: 使用迴圈跑出 products 資料 -->
             <% products.forEach((product)=> { %>
-                <!-- app.js抓到public後再去抓img -->
-                <img src="<%= product.imageUrl %>" class="card-img-top" alt="<%= product.title %>">
-                <div class="card-body">
-                    <h5 class="card-title"><%= product.title %></h5>
-                    <p class="card-text"><%= product.description %></p>
-                    <a href="#" class="btn btn-primary"><%= product.price %></a>
-                </div>
-                <div class="spinner-border text-primary d-flex justify-content-center" role="status">
-                    <img src="/imgs/01.png" alt=""><br>
-                    <span class="visually-hidden">Loading...</span>
-                </div>
+                <div class="col-12 col-md-6 col-lg-4 g-3">
+                    <div class="card">
+                        <!-- app.js抓到public後再去抓img -->
+                        <img src="<%= product.imageUrl %>" class="card-img-top" alt="<%= product.title %>">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= product.title %></h5>
+                            <p class="card-text"><%= product.description %></p>
+                            <a href="#" class="btn btn-primary">詳細資訊</a>
+                            <div class="spinner-border text-primary d-flex justify-content-center" role="status">
+                                <img src="/imgs/01.png" alt=""><br>
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
             <% }) %>
             <% }else{ %>
                 <h4>尚無商品</h4>
-        <% } %>    
-        </div>
-        
-      </div>
+            <% } %>    
+        </div>  
+    </div>   
+
+    
       <%- include('./includes/footer') %>
