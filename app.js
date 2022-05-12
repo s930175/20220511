@@ -54,7 +54,7 @@ app.use((req, res, next) => {
 	console.log('World!');
     next();
 });
-//middleware 中介軟體
+//middleware 中介軟體 '/'為路由，200請求成功，404找不到
 app.get('/', (req, res) => {
     res.status(200).sendFile(path.join(__dirname, 'views', 'index.html'));
     // res.writeHead(200, { 'Content-Type': 'text/html' });
@@ -67,6 +67,11 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
     res.status(200).sendFile(path.join(__dirname, 'views', 'login.html'));
 });
+
+//middleware 使用靜態資源(CSS JS IMG)(抓public)
+app.use(express.static(path.join(__dirname, 'public')));
+
+
 app.listen(3001, () => {
 	console.log('running server on port 3001');
 });
