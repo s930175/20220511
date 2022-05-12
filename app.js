@@ -81,10 +81,13 @@ app.post('/login', (req, res) => {
     }
 });
 
-
 //middleware 使用靜態資源(CSS JS IMG)(抓public)
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
+//萬用路由須放在最後面
+app.get('*', (req, res) => {
+    res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
+});
 
 app.listen(3001, () => {
 	console.log('running server on port 3001');
