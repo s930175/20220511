@@ -10,10 +10,11 @@
             height: 100%;
         }
         body{
-            display: flex;
+            display: block;
             background: url("https://picsum.photos/1440/1440?random1") no-repeat center center / cover;
-            justify-content: center;
+            margin: auto;
             align-items: center;
+            position: relative;
         }
         .login{
             width: 600px;
@@ -27,6 +28,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            position: absolute;
+            top: 25%;
+            left: 30%;
+            right: 50%;
+            bottom: 50%;
         }
         .form{
             font-family: Arial, Helvetica, sans-serif;
@@ -70,9 +76,7 @@
 <body>
     <!-- 導覽列 -->
     <%- include('./includes/navbar') %>
-
-
-
+    <!--  -->
     <div class="login">
         <form action="/login" method="POST" class="form">
             <h2>會員登入</h2>
