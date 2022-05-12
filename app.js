@@ -68,7 +68,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get('/', (req, res) => {
     res.status(200).render('index', {
         pageTitle:'Book Your Books online',
-        products: products
+        products: products,
+        path:'/'
     })
     //res.status(200).sendFile(path.join(__dirname, 'views', 'index.html'));
     // res.writeHead(200, { 'Content-Type': 'text/html' });
@@ -79,7 +80,11 @@ app.get('/', (req, res) => {
     // res.end();
 });
 app.get('/login', (req, res) => {
-    res.status(200).render('login')
+    res.status(200)
+        .render('login',{
+            path: '/login',
+            pageTitle: 'Login'
+        })
     //res.status(200).sendFile(path.join(__dirname, 'views', 'login.html'));
 });
 app.post('/login', (req, res) => {
@@ -96,7 +101,10 @@ app.post('/login', (req, res) => {
 
 //萬用路由*(沒有被設定的路徑)須放在最後面
 app.get('*', (req, res) => {
-    res.status(404).render('404')
+    res.status(404).render('404',{
+        path: '*',
+        pageTitle: '404'
+    })
     //res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
 });
 
