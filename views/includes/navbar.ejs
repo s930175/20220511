@@ -13,7 +13,7 @@
             <a class="nav-link <%= path === '/login' ? 'active' : '' %>" aria-current="page" href="/login">login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./logout">logout</a>
+            <a class="nav-link <%= path === '/logout' ? 'active' : '' %>" href="/logout" method="POST">logout</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

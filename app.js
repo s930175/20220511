@@ -97,7 +97,15 @@ app.post('/login', (req, res) => {
 		console.log('欄位尚未填寫完成！')
     }
 });
-
+app.get('/logout', (req, res) => {
+    res.status(200)
+        .render('login',{
+            //path用來對應分業畫面上，navbar上的黑體字，真正的路徑是上面的login
+            path: '/logout',
+            pageTitle: 'Login'
+        })
+    //res.status(200).sendFile(path.join(__dirname, 'views', 'login.html'));
+});
 
 //萬用路由*(沒有被設定的路徑)須放在最後面
 app.get('*', (req, res) => {
