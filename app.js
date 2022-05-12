@@ -13,6 +13,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { request } = require('http');
 
+
 //(三)自建模組
 // const hello =  require('./hello');
 
@@ -56,9 +57,17 @@ app.use((req, res, next) => {
 // 	console.log('World!');
 //     next();
 // });
+app.set('view engine', 'ejs');
+app.set('views', 'views'); // 預設路徑就是 views，如果沒有變動，可以省略此設定
+//middleware 使用靜態資源(CSS JS IMG)(抓public)
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({ extended: false }));
+
+//////////////////////////////////////////////
 //middleware 中介軟體 '/'為路由，200請求成功，404找不到
 app.get('/', (req, res) => {
-    res.status(200).sendFile(path.join(__dirname, 'views', 'index.html'));
+    res.status(200).render('index')
+    //res.status(200).sendFile(path.join(__dirname, 'views', 'index.html'));
     // res.writeHead(200, { 'Content-Type': 'text/html' });
     // res.write('<head><meta charset="utf-8" /></head>')
     // res.write('<body>')
@@ -67,9 +76,9 @@ app.get('/', (req, res) => {
     // res.end();
 });
 app.get('/login', (req, res) => {
-    res.status(200).sendFile(path.join(__dirname, 'views', 'login.html'));
+    res.status(200).render('login')
+    //res.status(200).sendFile(path.join(__dirname, 'views', 'login.html'));
 });
-app.use(bodyParser.urlencoded({ extended: false }));
 app.post('/login', (req, res) => {
     const {email, password} = req.body;
     // console.log('Form email: ', email)
@@ -81,12 +90,11 @@ app.post('/login', (req, res) => {
     }
 });
 
-//middleware 使用靜態資源(CSS JS IMG)(抓public)
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.urlencoded({ extended: false }));
-//萬用路由須放在最後面
+
+//萬用路由*(沒有被設定的路徑)須放在最後面
 app.get('*', (req, res) => {
-    res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
+    res.status(404).render('404')
+    //res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
 });
 
 app.listen(3001, () => {
