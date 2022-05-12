@@ -58,7 +58,7 @@ app.use((req, res, next) => {
 //     next();
 // });
 app.set('view engine', 'ejs');
-app.set('views', 'views'); // 預設路徑就是 views，如果沒有變動，可以省略此設定
+app.set('views', 'views'); // ('views','變動資料夾')預設路徑就是 views，如果沒有變動，可以省略此設定
 //middleware 使用靜態資源(CSS JS IMG)(抓public)
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -66,7 +66,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //////////////////////////////////////////////
 //middleware 中介軟體 '/'為路由，200請求成功，404找不到
 app.get('/', (req, res) => {
-    res.status(200).render('index')
+    res.status(200).render('index', {
+        pageTitle:'Book Your Books online'
+    })
     //res.status(200).sendFile(path.join(__dirname, 'views', 'index.html'));
     // res.writeHead(200, { 'Content-Type': 'text/html' });
     // res.write('<head><meta charset="utf-8" /></head>')
