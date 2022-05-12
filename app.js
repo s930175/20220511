@@ -64,6 +64,9 @@ app.get('/', (req, res) => {
     // res.write('</body>');
     // res.end();
 });
+app.get('/login', (req, res) => {
+    res.status(200).sendFile(path.join(__dirname, 'views', 'login.html'));
+});
 app.listen(3001, () => {
 	console.log('running server on port 3001');
 });
