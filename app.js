@@ -9,7 +9,9 @@ const path = require('path');
 // const url = require('url');
 
 //(二)套件模組
-const express = require('express')
+const express = require('express');
+const bodyParser = require('body-parser');
+const { request } = require('http');
 
 //(三)自建模組
 // const hello =  require('./hello');
@@ -50,10 +52,10 @@ app.use((req, res, next) => {
     next();
 });
 //middleware2
-app.use((req, res, next) => {
-	console.log('World!');
-    next();
-});
+// app.use((req, res, next) => {
+// 	console.log('World!');
+//     next();
+// });
 //middleware 中介軟體 '/'為路由，200請求成功，404找不到
 app.get('/', (req, res) => {
     res.status(200).sendFile(path.join(__dirname, 'views', 'index.html'));
@@ -67,10 +69,22 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
     res.status(200).sendFile(path.join(__dirname, 'views', 'login.html'));
 });
+app.use(bodyParser.urlencoded({ extended: false }));
+app.post('/login', (req, res) => {
+    const {email, password} = req.body;
+    // console.log('Form email: ', email)
+    // console.log('Form password: ', password)
+    if(email && password){
+        res.redirect('/');
+    } else {
+		console.log('欄位尚未填寫完成！')
+    }
+});
+
 
 //middleware 使用靜態資源(CSS JS IMG)(抓public)
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.listen(3001, () => {
 	console.log('running server on port 3001');
